@@ -1,5 +1,5 @@
 {
-  "name": "node-06-restserver",
+  "name": "node-08-products",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,21 +10,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gonzalezenios/node-06-RestServer.git"
+    "url": "git+https://github.com/Gonzalezenios/node-08-ApiRest-MongoDB.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Gonzalezenios/node-06-RestServer/issues"
+    "url": "https://github.com/Gonzalezenios/node-08-ApiRest-MongoDB/issues"
   },
-  "homepage": "https://github.com/Gonzalezenios/node-06-RestServer#readme",
+  "homepage": "https://github.com/Gonzalezenios/node-08-ApiRest-MongoDB#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.12.13",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3"
