@@ -9,7 +9,7 @@ const Success = require('../handlers/successHandler');
 
 const getAllUsers = async (req, res, next) => {
     try {
-        const users = await userService.findAll();
+        const users = await userService.findAll(req.query.filter, req.query.options);
         res.json(new Success(users));
     } catch (error) {
         next(error);
