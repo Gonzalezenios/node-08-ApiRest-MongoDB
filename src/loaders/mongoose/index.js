@@ -8,4 +8,4 @@ module.exports = async () => {
         useFindAndModify: false,
         useCreateIndex: true
     });
-}
+} 
