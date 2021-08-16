@@ -1,12 +1,12 @@
 const {
-    check,
-    validationResult
+    check
 } = require('express-validator');
-const AppError = require('../../erros/appError')
+const AppError = require('../../erros/appError');
 const userService = require('../../services/userService');
 const {
     ROLES
 } = require('../../constants/index');
+const { validationResult } = require('../commons');
 
 
 const _nameRequired = check('name', 'Name Required').not().isEmpty();
@@ -17,7 +17,7 @@ const _emailExist = check('email').custom(
     async (email = '') => {
         const userFound = await userService.findByEmail(email);
         if (userFound) {
-            throw new AppError('Email already exist in DB', 400)
+            throw new AppError('Email already exist in DB', 400);
         }
     }
 );
@@ -27,7 +27,7 @@ const _optionarlEmailExist = check('email').optional().custom(
     async (email = '') => {
         const userFound = await userService.findByEmail(email);
         if (userFound) {
-            throw new AppError('Email already exist in DB', 400)
+            throw new AppError('Email already exist in DB', 400);
         }
     }
 );
@@ -42,15 +42,6 @@ const _roleValid = check('role').optional().custom(
 );
 
 
-
-const _validationResult = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        throw new AppError('Validation Errors', 400, errors.errors);
-    }
-    next();
-};
-
 const _dateValid = check('birthdate').optional().isDate('MM-DD-YYYY');
 
 const _idRequired = check('id').not().isEmpty();
@@ -59,7 +50,7 @@ const _idExist = check('id').custom(
     async (id = '') => {
         const userFound = await userService.findById(id);
         if (!userFound) {
-            throw new AppError('id is does not exist in DB', 400)
+            throw new AppError('id is does not exist in DB', 400);
         }
     }
 );
@@ -73,8 +64,8 @@ const postRequestValidations = [
     _passwordRequiered,
     _roleValid,
     _dateValid,
-    _validationResult
-]
+    validationResult
+];
 
 const putRequestValidations = [
     _idRequired,
@@ -84,10 +75,10 @@ const putRequestValidations = [
     _optionarlEmailExist,
     _roleValid,
     _dateValid,
-    _validationResult
-]
+    validationResult
+];
 
 module.exports = {
     postRequestValidations,
     putRequestValidations,
-}
+};

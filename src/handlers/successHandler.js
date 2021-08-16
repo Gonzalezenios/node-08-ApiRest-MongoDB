@@ -2,8 +2,8 @@ class Success {
 
 
     constructor(data) {
-        this.status = 'OK',
-            this.data = data
+        this.status = 'OK';
+        this.data = data;
     }
 }
 

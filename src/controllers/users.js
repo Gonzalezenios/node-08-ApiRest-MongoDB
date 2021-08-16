@@ -66,7 +66,7 @@ const getById = async (req, res, next) => {
         const user = await userService.findById(req.params.id);
         res.json(new Success(user));
     } catch (error) {
-        next(error)
+        next(error);
     }
 };
 
@@ -94,4 +94,4 @@ module.exports = {
     updateUser,
     getById,
     deleteUser
-}
+};
