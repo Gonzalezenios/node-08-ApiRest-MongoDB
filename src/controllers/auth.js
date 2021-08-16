@@ -1,5 +1,4 @@
-const express = require('express');
-const userService = require('../services/userService');
+const authService = require('../services/authService');
 const Success = require('../handlers/successHandler');
 const { request, response } = require('express');
 
@@ -9,7 +8,7 @@ const login = async (req = request, res = response, next) => {
     try {
 
 
-        res.json(new Success({ test: 'ingreso al login' }));
+        res.json(new Success(await authService.login(email, password)));
 
     } catch (error) {
         next(error);
